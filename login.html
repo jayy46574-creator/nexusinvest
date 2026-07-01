@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Login</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <body class="bg-gray-950 text-white min-h-screen flex items-center justify-center p-4 font-sans">
+        <div class="w-full max-w-md bg-gray-900 p-8 rounded-3xl border border-gray-800 shadow-2xl">
+            <h2 class="text-3xl font-bold mb-6 text-center">Welcome Back</h2>
+            <form id="loginForm" class="space-y-4">
+                <input type="email" id="email" placeholder="Email Address"
+                    class="w-full bg-gray-800 border border-gray-700 p-4 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none">
+                <input type="password" id="password" placeholder="Password"
+                    class="w-full bg-gray-800 border border-gray-700 p-4 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none">
+                <button type="submit"
+                    class="w-full bg-orange-500 hover:bg-orange-600 p-4 rounded-xl font-bold transition-all">Sign
+                    In</button>
+            </form>
+            <p class="mt-6 text-center text-gray-400 text-sm">Don't have an account? <a href="signup.html"
+                    class="text-orange-500 hover:underline">Sign up</a></p>
+        </div>
+    </body>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert("Login successful!");
+                    // Add this line inside your login/signup success block
+                    localStorage.setItem('currentUser', email);
+                    window.location.href = 'dashboard.html'; // This redirects the browser
+                } else {
+                    alert("Login failed: " + data.message);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Could not connect to the server. Make sure node server.js is running!");
+            }
+        });
+    </script>
+</body>
+
+</html>

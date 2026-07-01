@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Nexus Vest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-white min-h-screen flex items-center justify-center p-6 font-sans">
+
+    <div class="w-full max-w-md bg-gray-900 p-10 rounded-3xl border border-gray-800 shadow-2xl">
+        <!-- Branding Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-black text-orange-500 mb-2">Welcome to Nexus</h1>
+            <p class="text-gray-400 text-sm">Create an account to start your journey.</p>
+        </div>
+<!-- Signup Container -->
+<div class="max-w-xl w-full bg-darkpanel p-8 rounded-3xl border border-gray-800 shadow-2xl">
+  <div class="text-center mb-6">
+    <h3 class="text-2xl font-black tracking-wide text-white">Create Account</h3>
+    <p class="text-xs text-gray-400 mt-1">Join the Nexus Vest investment platform</p>
+  </div>
+
+  <form id="signupForm" class="space-y-4">
+    <!-- First & Last Name Row -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="text-xs font-medium mb-1.5 block text-gray-400">First Name</label>
+        <input type="text" id="firstName" required class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm focus:border-orange-500 focus:outline-none text-white">
+      </div>
+      <div>
+        <label class="text-xs font-medium mb-1.5 block text-gray-400">Last Name</label>
+        <input type="text" id="lastName" required class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm focus:border-orange-500 focus:outline-none text-white">
+      </div>
+    </div>
+
+    <!-- Phone & Country Row -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="text-xs font-medium mb-1.5 block text-gray-400">Phone Number</label>
+        <input type="tel" id="phone" required placeholder="+1 (555) 000-0000" class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm focus:border-orange-500 focus:outline-none text-white">
+      </div>
+      <div>
+        <label class="text-xs font-medium mb-1.5 block text-gray-400">Country</label>
+        <input type="text" id="country" required placeholder="United States" class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm focus:border-orange-500 focus:outline-none text-white">
+      </div>
+    </div>
+
+    <!-- Email Field -->
+    <div>
+      <label class="text-xs font-medium mb-1.5 block text-gray-400">Email Address</label>
+      <input type="email" id="email" required placeholder="name@example.com" class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm focus:border-orange-500 focus:outline-none text-white">
+    </div>
+
+    <!-- Password Field -->
+    <div>
+      <label class="text-xs font-medium mb-1.5 block text-gray-400">Password</label>
+      <input type="password" id="password" required placeholder="••••••••" class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm focus:border-orange-500 focus:outline-none text-white">
+    </div>
+
+    <!-- Home Address Field -->
+    <div>
+      <label class="text-xs font-medium mb-1.5 block text-gray-400">Home Address</label>
+      <input type="text" id="address" required placeholder="123 Main St, Apt 4B" class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm focus:border-orange-500 focus:outline-none text-white">
+    </div>
+
+    <!-- Referral ID Field (Optional) -->
+    <div>
+      <label class="text-xs font-medium mb-1.5 block text-gray-400">Referral ID <span class="text-gray-600 text-[10px]">(Optional)</span></label>
+      <input type="text" id="referralId" placeholder="NEXUS-XXXX" class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 text-sm focus:border-orange-500 focus:outline-none text-white font-mono">
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-green-600 text-white rounded-xl py-3 font-medium text-sm hover:opacity-95 transition mt-2">Create Account</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Collect all values from the form inputs
+    const payload = {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      phone: document.getElementById('phone').value,
+      country: document.getElementById('country').value,
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value,
+      address: document.getElementById('address').value,
+      referralId: document.getElementById('referralId').value // Will send empty string if blank
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message);
+        window.location.href = 'login.html'; // Direct user to login page
+      } else {
+        alert("Registration failed: " + data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Could not connect to authentication server.");
+    }
+  });
+</script>
+</body>
+</html>

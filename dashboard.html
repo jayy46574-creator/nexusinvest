@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Vest | Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0B0E14',
+                        darkpanel: '#121722',
+                        primary: '#f97316',
+                        secondary: '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body class="bg-darkbg text-gray-100 font-sans min-h-screen flex flex-col">
+
+    <div
+        class="bg-gradient-to-r from-orange-500 to-green-600 text-white text-xs py-1.5 px-4 flex justify-between items-center font-mono w-full z-50">
+        <div class="flex items-center gap-2">
+            <span class="animate-pulse h-2 w-2 rounded-full bg-white"></span>
+            <span>Live Market Node Connected</span>
+        </div>
+        <div>Bitcoin (BTC): <span id="marketPrice" class="font-bold">$67,420.50</span></div>
+    </div>
+
+    <div class="flex flex-1 overflow-hidden">
+
+        <aside class="w-64 bg-darkpanel border-r border-gray-800 flex flex-col hidden md:flex">
+            <div class="h-20 flex items-center px-6 border-b border-gray-800/50">
+                <div class="flex items-center gap-2">
+                    <div class="p-2 bg-orange-500 rounded-lg text-white font-black text-xl">₿</div>
+                    <span
+                        class="font-bold text-lg tracking-wider bg-gradient-to-r from-orange-400 to-green-400 bg-clip-text text-transparent">NEXUS
+                        VEST</span>
+                </div>
+            </div>
+
+            <nav class="p-4 space-y-2 flex-1">
+                <button
+                    class="nav-link bg-gray-800/40 text-gray-200 w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all"
+                    data-target="view-dashboard">
+                    <i class="ph ph-squares-four text-lg"></i> Dashboard
+                </button>
+                <button
+                    class="nav-link text-gray-400 hover:bg-gray-800/40 hover:text-gray-200 w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all"
+                    data-target="view-deposit">
+                    <i class="ph ph-arrow-circle-down text-lg"></i> Deposit Funds
+                </button>
+                <button
+                    class="nav-link text-gray-400 hover:bg-gray-800/40 hover:text-gray-200 w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all"
+                    data-target="view-withdraw">
+                    <i class="ph ph-arrow-circle-up text-lg"></i> Withdrawal
+                </button>
+                <button data-target="view-contact"
+                    class="nav-btn flex items-center gap-3 w-full px-4 py-3 rounded-xl text-gray-400 hover:bg-gray-900 hover:text-white transition">
+                    <i class="ph ph-envelope-simple text-xl"></i>
+                    <span class="text-sm font-medium">Contact Us</span>
+                </button>
+            </nav>
+
+            <div class="p-4 border-t border-gray-800">
+                <button onclick="logout()"
+                    class="text-red-400 hover:text-red-300 w-full flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-medium transition-all">
+                    <i class="ph ph-sign-out text-lg"></i> Log Out
+                </button>
+            </div>
+        </aside>
+
+        <div class="flex-1 flex flex-col h-[calc(100vh-32px)] overflow-y-auto">
+
+            <header
+                class="h-20 px-8 flex items-center justify-between border-b bg-darkpanel/50 border-gray-800 sticky top-0 z-30 backdrop-blur-md">
+                <h2 class="text-xl font-bold">User Portal</h2>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-3 pl-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-tr from-gray-700 to-gray-600 flex items-center justify-center font-bold text-white shadow-md">
+                            <i class="ph ph-user text-xl"></i>
+                        </div>
+                        <div class="hidden sm:block text-left">
+                            <p id="userEmailDisplay" class="text-sm font-medium">Loading...</p>
+                            <span class="text-xs text-green-400 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Network Active
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="p-8 flex-1">
+
+                <section id="view-dashboard" class="view-section active space-y-6">
+
+                    <div
+                        class="p-8 bg-gradient-to-br from-gray-900 to-[#161d2a] rounded-3xl border border-gray-800 relative overflow-hidden shadow-lg text-white col-span-1 lg:col-span-2">
+                        <i class="ph ph-wallet absolute right-0 top-0 p-6 opacity-10 text-orange-500 text-9xl"></i>
+                        <p class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-6">Total Available
+                            Balance</p>
+
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-700">
+                            <div>
+                                <p class="text-xs text-gray-400 mb-2">Fiat Value (USD)</p>
+                                <h3 id="balanceDisplayUSD" class="text-4xl font-black font-mono text-white">$0.00</h3>
+                            </div>
+
+                            <div class="md:pl-8 pt-6 md:pt-0">
+                                <p class="text-xs text-gray-400 mb-2">Cryptocurrency (BTC)</p>
+                                <h3 id="balanceDisplayBTC" class="text-4xl font-black font-mono text-orange-400">
+                                    0.00000000 BTC</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Active Plans Card Only -->
+                    <div class="max-w-xs p-6 bg-darkpanel rounded-2xl border border-gray-800 shadow-sm">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Active Plans</p>
+                        <h3 class="text-xl font-bold font-mono text-green-400">1</h3>
+                    </div>
+                    <div class="p-6 bg-darkpanel rounded-2xl border border-gray-800 mt-6">
+                        <h4 class="text-base font-bold mb-4 flex items-center gap-2">
+                            <i class="ph ph-chart-line-up text-orange-500"></i> Market Analysis
+                        </h4>
+
+                        <div class="tradingview-widget-container" style="height: 400px; width: 100%;">
+                            <div id="tradingview_chart" style="height: 100%; width: 100%;"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                            <script type="text/javascript">
+                                new TradingView.widget(
+                                    {
+                                        "autosize": true,
+                                        "symbol": "BITSTAMP:BTCUSD",
+                                        "interval": "D",
+                                        "timezone": "Etc/UTC",
+                                        "theme": "dark",
+                                        "style": "1",
+                                        "locale": "en",
+                                        "toolbar_bg": "#121722",
+                                        "enable_publishing": false,
+                                        "allow_symbol_change": true,
+                                        "container_id": "tradingview_chart"
+                                    }
+                                );
+                            </script>
+                        </div>
+                    </div>
+                    <!-- Recent Activity Table -->
+                    <div class="p-6 bg-darkpanel rounded-2xl border border-gray-800">
+                        <h4 class="text-base font-bold mb-4 flex items-center gap-2">
+                            <i class="ph ph-clock-counter-clockwise text-orange-500"></i> Recent Activity
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm">
+                                <thead>
+                                    <tr class="border-b border-gray-800 text-gray-400 text-xs uppercase">
+                                        <th class="pb-3">TXID</th>
+                                        <th class="pb-3">Type</th>
+                                        <th class="pb-3">Amount</th>
+                                        <th class="pb-3">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transactionHistoryTable" class="divide-y divide-gray-800/40">
+                                    <!-- Javascript will inject rows here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <!-- DEPOSIT VIEW -->
+                <section id="view-deposit"
+                    class="view-section hidden max-w-3xl p-6 bg-darkpanel rounded-2xl border border-gray-800 space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Initiate Secure Deposit</h3>
+                        <p class="text-xs text-gray-400">Allocate funds to your account balance.</p>
+                    </div>
+
+                    <!-- Clean full-width address panel -->
+                    <div class="space-y-3">
+                        <label class="text-sm font-semibold text-gray-400 block tracking-wide">System Destination
+                            Address</label>
+                        <div
+                            class="bg-gray-900 p-4 rounded-xl border border-gray-800 font-mono text-base sm:text-lg text-orange-500 select-all break-all tracking-wide shadow-inner">
+                            bc1q5cqarnp7g55ntncx0fm7wghxcd9e2sunek59rc
+                        </div>
+                        <span class="text-xs text-amber-500 flex items-center gap-1">
+                            <span class="inline-block animate-pulse">⚠️</span> Send only native BTC to this target
+                            address.
+                        </span>
+                    </div>
+
+                    <hr class="border-gray-800/60">
+
+                    <form id="depositForm" class="space-y-4">
+                        <div>
+                            <label class="text-sm font-medium mb-1.5 block">Amount (USD)</label>
+                            <input type="number" id="depositAmount" step="1" placeholder="Enter USD amount (e.g. 500)"
+                                required
+                                class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 font-mono text-sm focus:border-orange-500 focus:outline-none text-white">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-orange-500 to-green-600 text-white rounded-xl py-3 font-medium text-sm hover:opacity-90 transition">Confirm
+                            Payment Broadcast</button>
+                    </form>
+                </section>
+                <section id="view-withdraw"
+                    class="view-section hidden max-w-3xl p-6 bg-darkpanel rounded-2xl border border-gray-800 space-y-6">
+                    <div>
+                        <h3 class="text-lg font-bold">Request Withdrawal</h3>
+                        <p class="text-xs text-gray-400">Transfer funds to your external BTC wallet.</p>
+                    </div>
+                    <hr class="border-gray-800">
+
+                    <div id="withdrawStep1" class="block">
+                        <button id="startWithdrawBtn"
+                            class="w-full bg-gray-800 border border-gray-700 text-white rounded-xl py-4 font-medium text-sm hover:bg-gray-700 transition flex justify-center items-center gap-2">
+                            <i class="ph ph-wallet text-xl"></i> Initiate New Withdrawal
+                        </button>
+                    </div>
+
+                    <div id="withdrawStep2" class="hidden space-y-4">
+                        <div class="flex justify-center mb-2">
+                            <div class="bg-orange-500/10 p-3 rounded-full">
+                                <i class="ph ph-lock-key text-2xl text-orange-500"></i>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <label class="text-sm font-medium mb-2 block text-gray-300">Enter 4-Digit Security
+                                PIN</label>
+                            <input type="password" id="withdrawPin" maxlength="4" placeholder="••••"
+                                class="w-44 mx-auto bg-gray-900 border border-gray-800 rounded-xl p-3 font-mono text-center tracking-[0.5em] text-2xl focus:border-orange-500 focus:outline-none text-white block">
+                        </div>
+                        <button id="verifyPinBtn"
+                            class="w-full bg-orange-500 text-white rounded-xl py-3 font-medium text-sm hover:opacity-90 transition mt-4">Verify
+                            Identity</button>
+                    </div>
+
+                    <form id="withdrawForm" class="hidden space-y-4">
+                        <div class="flex items-center gap-2 text-green-500 text-sm font-medium mb-4">
+                            <i class="ph ph-check-circle"></i> PIN Verified
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium mb-1.5 block">Destination BTC Address</label>
+                            <input type="text" id="withdrawAddress"
+                                placeholder="e.g. bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" required
+                                class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 font-mono text-sm focus:border-orange-500 focus:outline-none text-white">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium mb-1.5 block">Amount (USD)</label>
+                            <input type="number" id="withdrawAmount" step="1" min="1"
+                                placeholder="Enter USD amount to withdraw" required
+                                class="w-full bg-gray-900 border border-gray-800 rounded-xl p-3 font-mono text-sm focus:border-orange-500 focus:outline-none text-white">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-orange-500 to-green-600 text-white rounded-xl py-3 font-medium text-sm hover:opacity-90 transition">Confirm
+                            Withdrawal</button>
+                    </form>
+                </section>
+                <section id="view-contact"
+                    class="view-section hidden max-w-3xl p-8 bg-darkpanel rounded-3xl border border-gray-800/80 space-y-6 shadow-xl">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Contact Support</h3>
+                        <p class="text-sm text-gray-400 mt-1">Contact our Team on this E-mail</p>
+                    </div>
+
+                    <hr class="border-gray-800/60">
+
+                    <div>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nexus.investment01@gmail.com"
+                            target="_blank"
+                            class="text-base font-semibold text-gray-200 hover:text-orange-500 transition-colors duration-200 font-mono tracking-wide inline-block">
+                            nexus.investment01@gmail.com
+                        </a>
+                    </div>
+                </section>
+
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 1. Logic to fetch backend balance
+        // Function to get live BTC price
+        async function updateMarketData() {
+            try {
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+                const data = await response.json();
+                const btcRate = data.bitcoin.usd;
+
+                // Update the top header/market status
+                document.getElementById('marketPrice').innerText = `Bitcoin (BTC): $${btcRate.toLocaleString()}`;
+
+                // Update dashboard math using the new rate
+                return btcRate;
+            } catch (error) {
+                console.error("Could not fetch price, using fallback:", error);
+                return 67420.50; // Fallback price if API is down
+            }
+        }
+
+        async function loadDashboard() {
+            const email = localStorage.getItem('currentUser');
+
+            if (!email) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            document.getElementById('userEmailDisplay').innerText = email;
+
+            // --- ADD THESE TWO LINES ---
+            // Fetch price first
+            const btcRate = await updateMarketData();
+
+            try {
+                // Fetch User Balance Data
+                const response = await fetch(`http://localhost:3000/api/user?email=${email}`);
+                const data = await response.json();
+
+                if (data.balance !== undefined) {
+                    const usdBalance = data.balance;
+
+                    // Now btcRate is available here to use in the math!
+                    const btcBalance = (usdBalance / btcRate).toFixed(8);
+
+                    document.getElementById('balanceDisplayUSD').innerText = `$${usdBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                    document.getElementById('balanceDisplayBTC').innerText = `${btcBalance} BTC`;
+                }
+
+                // ... (rest of your existing transaction history code remains the same)
+                // Fetch User Transaction History
+                const txResponse = await fetch(`http://localhost:3000/api/transactions?email=${email}`);
+                const history = await txResponse.json();
+                const tableBody = document.getElementById('transactionHistoryTable');
+
+                tableBody.innerHTML = ''; // Clear out old placeholders
+
+                if (history.length === 0) {
+                    tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="py-4 text-center text-gray-500 text-xs">No transactions recorded yet.</td>
+                    </tr>`;
+                } else {
+                    history.forEach(tx => {
+                        tableBody.innerHTML += `
+                        <tr class="hover:bg-gray-800/20">
+                            <td class="py-3 font-mono text-xs text-gray-500">${tx.txid}</td>
+                            <td class="py-3 font-medium text-gray-200">${tx.type}</td>
+                            <td class="py-3 font-mono text-orange-400">+$${tx.amount.toFixed(2)}</td>
+                            <td class="py-3">
+                                <span class="bg-green-500/10 text-emerald-400 text-xs px-2.5 py-0.5 rounded-full">
+                                    ${tx.status}
+                                </span>
+                            </td>
+                        </tr>`;
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        // Run this immediately
+        loadDashboard();
+
+        // --- Universal View Switcher ---
+        const navButtons = document.querySelectorAll('[data-target]');
+        const viewSections = document.querySelectorAll('.view-section');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+
+                // 1. Hide all view sections
+                viewSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // 2. Show the clicked view section
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                }
+
+                // 3. Update active button styling
+                navButtons.forEach(btn => {
+                    btn.classList.remove('bg-gray-900', 'text-white');
+                    btn.classList.add('text-gray-400');
+                });
+                button.classList.add('bg-gray-900', 'text-white');
+                button.classList.remove('text-gray-400');
+            });
+        });
+        // 3. Logout function
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+        // 4. Deposit Logic
+        document.getElementById('depositForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const amount = document.getElementById('depositAmount').value;
+            const email = localStorage.getItem('currentUser');
+
+            if (!email) {
+                alert("You must be logged in to deposit!");
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/api/deposit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, amount })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert("Deposit submitted! Your funds will reflect once approved by an administrator.");
+                    document.getElementById('depositAmount').value = ''; // Clear the input box
+
+                    // Automatically switch back to the Dashboard view and refresh the numbers
+                    document.querySelector('[data-target="view-dashboard"]').click();
+                    loadDashboard();
+                } else {
+                    alert("Deposit failed: " + data.message);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Server connection failed.");
+            }
+        });
+        // --- 5. Withdrawal Multi-Step Logic ---
+
+        // Transition from Step 1 to Step 2
+        document.getElementById('startWithdrawBtn').addEventListener('click', function () {
+            document.getElementById('withdrawStep1').classList.add('hidden');
+            document.getElementById('withdrawStep2').classList.remove('hidden');
+        });
+
+        // Verify PIN and transition to Step 3
+        document.getElementById('verifyPinBtn').addEventListener('click', function () {
+            const pin = document.getElementById('withdrawPin').value;
+
+            // For testing right now, we will hardcode the PIN to "1234"
+            if (pin === '1234') {
+                document.getElementById('withdrawStep2').classList.add('hidden');
+                document.getElementById('withdrawForm').classList.remove('hidden');
+            } else {
+                alert('Awaiting Confirmation');
+                document.getElementById('withdrawPin').value = ''; // clear the box
+            }
+        });
+
+        // Submit the Final Withdrawal Form
+        document.getElementById('withdrawForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const amount = document.getElementById('withdrawAmount').value;
+            const address = document.getElementById('withdrawAddress').value;
+            const email = localStorage.getItem('currentUser');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/withdraw', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, amount, address })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert("Withdrawal successful!");
+
+                    // Reset the form back to Step 1 for the next time they use it
+                    document.getElementById('withdrawForm').reset();
+                    document.getElementById('withdrawPin').value = '';
+                    document.getElementById('withdrawForm').classList.add('hidden');
+                    document.getElementById('withdrawStep1').classList.remove('hidden');
+
+                    // Go back to Dashboard and refresh data
+                    document.querySelector('[data-target="view-dashboard"]').click();
+                    loadDashboard();
+                } else {
+                    alert("Withdrawal failed: " + data.message);
+                }
+            } catch (error) {
+                alert("Server connection failed.");
+            }
+        });
+        // 6. Contact Us Logic
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // For now, trigger a success notice and reset the form
+            alert("Message sent successfully! Support will review it shortly.");
+
+            document.getElementById('contactForm').reset();
+
+            // Redirect back to main dashboard view automatically
+            document.querySelector('[data-target="view-dashboard"]').click();
+            loadDashboard();
+        });
+    </script>
+</body>
+
+</html>

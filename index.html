@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Vest | Premium Crypto Investment Platform</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0B0E14',
+                        darkpanel: '#121722',
+                        primary: '#f97316',
+                        secondary: '#10b981'
+                    },
+                    animation: {
+                        'ticker': 'ticker 30s linear infinite',
+                    },
+                    keyframes: {
+                        ticker: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hide scrollbar for the ticker */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gray-50 text-gray-800 dark:bg-darkbg dark:text-gray-100 font-sans transition-colors duration-300 overflow-x-hidden">
+
+    <nav
+        class="fixed w-full z-50 bg-white/80 dark:bg-darkpanel/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <a href="#" class="flex items-center gap-2">
+                <div
+                    class="p-1.5 bg-gradient-to-br from-orange-400 to-orange-600 rounded text-white font-black text-xl shadow-lg shadow-orange-500/30">
+                    ₿</div>
+                <span class="font-bold text-xl tracking-wider text-gray-900 dark:text-white">NEXUS VEST</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-600 dark:text-gray-300">
+                <a href="#features" class="hover:text-orange-500 transition-colors">Features</a>
+                <a href="#how-it-works" class="hover:text-orange-500 transition-colors">How it Works</a>
+                <a href="#plans" class="hover:text-orange-500 transition-colors">Investment Plans</a>
+                <a href="learn.html" class="hover:text-orange-500 transition-colors">Academy</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors">
+                    <i class="ph ph-sun text-xl hidden dark:block"></i>
+                    <i class="ph ph-moon text-xl block dark:hidden"></i>
+                </button>
+                <div class="hidden sm:flex gap-3">
+                    <a href="login.html"
+                        class="px-5 py-2.5 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors">Log
+                        In</a>
+                    <a href="signup.html"
+                        class="px-5 py-2.5 text-sm font-semibold text-white bg-orange-500 hover:bg-orange-600 rounded-xl shadow-lg shadow-orange-500/25 transition-all transform hover:-translate-y-0.5">Sign
+                        Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-[100px] pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 text-sm font-bold tracking-wide mb-6">
+                <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span> Next-Generation Trading
+            </span>
+            <h1
+                class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
+                Secure Your Future with <br class="hidden md:block">
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-500">Digital
+                    Assets</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
+                Trade, invest, and grow your crypto portfolio with institutional-grade security and automated wealth
+                generation tools.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="signup.html"
+                    class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white bg-orange-500 hover:bg-orange-600 rounded-xl shadow-xl shadow-orange-500/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    Start Investing Now <i class="ph ph-arrow-right text-lg"></i>
+                </a>
+                <a href="learn.html"
+                    class="w-full sm:w-auto px-8 py-4 text-base font-bold text-gray-900 dark:text-white bg-white dark:bg-darkpanel border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-all flex items-center justify-center gap-2">
+                    Explore Academy
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div
+        class="w-full bg-white dark:bg-darkpanel border-y border-gray-200 dark:border-gray-800 py-3 overflow-hidden flex">
+        <div class="flex animate-ticker whitespace-nowrap">
+            <div class="flex gap-12 px-6 items-center">
+                <span class="font-bold">BTC <span class="text-green-500">$64,230.12 <i
+                            class="ph-fill ph-caret-up text-xs"></i></span></span>
+                <span class="font-bold">ETH <span class="text-green-500">$3,450.80 <i
+                            class="ph-fill ph-caret-up text-xs"></i></span></span>
+                <span class="font-bold">SOL <span class="text-red-500">$142.65 <i
+                            class="ph-fill ph-caret-down text-xs"></i></span></span>
+                <span class="font-bold">BNB <span class="text-green-500">$590.20 <i
+                            class="ph-fill ph-caret-up text-xs"></i></span></span>
+                <span class="font-bold">XRP <span class="text-red-500">$0.58 <i
+                            class="ph-fill ph-caret-down text-xs"></i></span></span>
+            </div>
+            <div class="flex gap-12 px-6 items-center">
+                <span class="font-bold">BTC <span class="text-green-500">$64,230.12 <i
+                            class="ph-fill ph-caret-up text-xs"></i></span></span>
+                <span class="font-bold">ETH <span class="text-green-500">$3,450.80 <i
+                            class="ph-fill ph-caret-up text-xs"></i></span></span>
+                <span class="font-bold">SOL <span class="text-red-500">$142.65 <i
+                            class="ph-fill ph-caret-down text-xs"></i></span></span>
+                <span class="font-bold">BNB <span class="text-green-500">$590.20 <i
+                            class="ph-fill ph-caret-up text-xs"></i></span></span>
+                <span class="font-bold">XRP <span class="text-red-500">$0.58 <i
+                            class="ph-fill ph-caret-down text-xs"></i></span></span>
+            </div>
+        </div>
+    </div>
+
+    <section id="features" class="py-20 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Why Choose Nexus Vest?
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400">We combine cutting-edge technology with deep liquidity to
+                    offer the ultimate environment for both beginner and institutional traders.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white dark:bg-darkpanel p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-orange-500/50 transition-colors shadow-sm">
+                    <div
+                        class="w-14 h-14 bg-orange-100 dark:bg-orange-500/10 text-orange-500 rounded-2xl flex items-center justify-center text-3xl mb-6">
+                        <i class="ph ph-shield-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Bank-Grade Security</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">98% of all assets are stored
+                        securely offline in cold storage infrastructure. We employ advanced AES-256 encryption across
+                        all data layers.</p>
+                </div>
+
+                <div
+                    class="bg-white dark:bg-darkpanel p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-orange-500/50 transition-colors shadow-sm">
+                    <div
+                        class="w-14 h-14 bg-blue-100 dark:bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center text-3xl mb-6">
+                        <i class="ph ph-lightning"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Instant Execution</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Our proprietary trading engine
+                        processes up to 1.5 million orders per second, ensuring zero lag and minimal slippage during
+                        high volatility.</p>
+                </div>
+
+                <div
+                    class="bg-white dark:bg-darkpanel p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-orange-500/50 transition-colors shadow-sm">
+                    <div
+                        class="w-14 h-14 bg-green-100 dark:bg-green-500/10 text-green-500 rounded-2xl flex items-center justify-center text-3xl mb-6">
+                        <i class="ph ph-chart-line-up"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Automated Yields</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Put your idle crypto to work.
+                        Stake your assets directly from your dashboard and earn up to 12% APY paid out daily.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="plans"
+        class="py-20 lg:py-32 bg-white dark:bg-darkpanel/50 border-y border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Select Your Investment
+                    Tier</h2>
+                <p class="text-gray-600 dark:text-gray-400">Choose a managed plan that fits your financial goals. Our
+                    automated systems do the heavy lifting for you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+                <div
+                    class="bg-gray-50 dark:bg-darkbg p-8 rounded-3xl border border-gray-200 dark:border-gray-800 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Starter</h3>
+                    <div class="text-3xl font-black text-gray-900 dark:text-white mb-6">5% <span
+                            class="text-base font-normal text-gray-500">Weekly ROI</span></div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400"><i
+                                class="ph-fill ph-check-circle text-green-500"></i> Min Deposit: $500</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400"><i
+                                class="ph-fill ph-check-circle text-green-500"></i> Max Deposit: $4,999</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400"><i
+                                class="ph-fill ph-check-circle text-green-500"></i> 24/7 Email Support</li>
+                    </ul>
+                    <a href="signup.html"
+                        class="w-full py-3 text-center rounded-xl font-bold text-gray-900 dark:text-white bg-white dark:bg-darkpanel border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Choose
+                        Starter</a>
+                </div>
+
+                <div
+                    class="bg-gradient-to-b from-orange-500 to-orange-600 p-8 rounded-3xl shadow-xl shadow-orange-500/20 transform md:-translate-y-4 flex flex-col relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 bg-white/20 px-4 py-1 rounded-bl-xl text-xs font-bold text-white backdrop-blur-sm">
+                        MOST POPULAR</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Professional</h3>
+                    <div class="text-3xl font-black text-white mb-6">10% <span
+                            class="text-base font-normal text-orange-200">Weekly ROI</span></div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-white/90"><i
+                                class="ph-fill ph-check-circle text-white"></i> Min Deposit: $5,000</li>
+                        <li class="flex items-center gap-3 text-sm text-white/90"><i
+                                class="ph-fill ph-check-circle text-white"></i> Max Deposit: $19,999</li>
+                        <li class="flex items-center gap-3 text-sm text-white/90"><i
+                                class="ph-fill ph-check-circle text-white"></i> Priority Withdrawals</li>
+                        <li class="flex items-center gap-3 text-sm text-white/90"><i
+                                class="ph-fill ph-check-circle text-white"></i> Dedicated Account Manager</li>
+                    </ul>
+                    <a href="signup.html"
+                        class="w-full py-3 text-center rounded-xl font-bold text-orange-600 bg-white hover:bg-gray-50 transition-colors shadow-lg">Choose
+                        Pro</a>
+                </div>
+
+                <div
+                    class="bg-gray-50 dark:bg-darkbg p-8 rounded-3xl border border-gray-200 dark:border-gray-800 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">VIP Platinum</h3>
+                    <div class="text-3xl font-black text-gray-900 dark:text-white mb-6">18% <span
+                            class="text-base font-normal text-gray-500">Weekly ROI</span></div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400"><i
+                                class="ph-fill ph-check-circle text-green-500"></i> Min Deposit: $20,000</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400"><i
+                                class="ph-fill ph-check-circle text-green-500"></i> Max Deposit: Unlimited</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400"><i
+                                class="ph-fill ph-check-circle text-green-500"></i> Zero Trading Fees</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400"><i
+                                class="ph-fill ph-check-circle text-green-500"></i> VIP Events Access</li>
+                    </ul>
+                    <a href="signup.html"
+                        class="w-full py-3 text-center rounded-xl font-bold text-gray-900 dark:text-white bg-white dark:bg-darkpanel border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Choose
+                        VIP</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+   <section class="bg-darkbg py-20 px-6 sm:px-12">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-black tracking-wide text-white uppercase">What Our Investors Say</h2>
+      <p class="text-sm text-gray-400 mt-2">Real feedback from 10 global Nexus Vest platform members.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-16 gap-x-8">
+      
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            Since I started using Nexus Vest, I have been earning like never before. You guys have the best signals.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80" alt="Malcom" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">MALCOM47</h4>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            I already got more than $200,000 within a month investing with Nexus Vest. Will again invest soon.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80" alt="Christy" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">CHRISTY</h4>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            I was able to earn additional $30,000 to my profit. It's amazing, you guys are the best, keep it up.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80" alt="Linday" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">LINDAY8</h4>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            This was a very easy process and I received my funds quickly as I needed them! Highly recommend Nexus Vest.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" alt="Crian" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">CRIAN</h4>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            The automated balance tracking combined with backend verification gives me immense peace of mind.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80" alt="Alex" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">ALEX_T92</h4>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            Incredibly responsive platform. The layout is beautiful, and making a deposit request takes seconds.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&h=150&q=80" alt="Sarah" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">SARAH_K</h4>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            The multi-step withdrawal pin is a brilliant touch. Knowing my wallet transactions are secure is everything.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80" alt="David" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">DAVID_FX</h4>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            Customer service via their direct Gmail integration is remarkably fast. Top tier assistance right here.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&h=150&q=80" alt="Elena" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">ELENA_R</h4>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            Clean design, real-time live BTC data streaming in the top bar, and absolute transparency all around.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&h=150&q=80" alt="Marcus" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">MARCUS_V</h4>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-2xl p-6 shadow-xl relative min-h-[160px] flex items-center justify-center w-full">
+          <span class="absolute top-3 left-4 text-gray-200 text-4xl font-serif select-none leading-none">“</span>
+          <p class="text-gray-700 text-xs sm:text-sm leading-relaxed text-center font-medium px-2">
+            Five stars for the UI. The dashboard matches exactly what modern crypto traders expect out of a portal.
+          </p>
+          <span class="absolute bottom-1 right-4 text-gray-200 text-4xl font-serif select-none leading-none">”</span>
+        </div>
+        <div class="-mt-10 relative z-10 w-20 h-20 rounded-full overflow-hidden border-4 border-darkbg shadow-lg bg-gray-800">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80" alt="Jessica" class="w-full h-full object-cover">
+        </div>
+        <h4 class="mt-4 text-xs font-bold tracking-widest text-gray-400 uppercase font-sans">JESSICA_M</h4>
+      </div>
+
+    </div>
+  </div>
+</section>
+    <section class="py-20 lg:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-orange-500/5 dark:bg-orange-500/10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Ready to start trading?</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-10">Join thousands of users who trust Nexus Vest to
+                grow their digital asset portfolios.</p>
+            <a href="signup.html"
+                class="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-xl transition-colors shadow-xl shadow-orange-500/25 text-lg">
+                Create Your Free Account <i class="ph ph-user-plus"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-white dark:bg-darkpanel border-t border-gray-200 dark:border-gray-800 py-12">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+            <div class="flex items-center gap-2">
+                <div class="p-1 bg-orange-500 rounded text-white font-black text-xs">₿</div>
+                <span class="font-bold text-gray-900 dark:text-white">NEXUS VEST</span>
+            </div>
+            <p>&copy; 2026 Nexus Vest Platforms Inc. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-orange-500 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-orange-500 transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlTag = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            htmlTag.classList.toggle('dark');
+        });
+    </script>
+</body>
+
+</html>

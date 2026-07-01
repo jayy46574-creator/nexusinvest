@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "firstName": "Joshua",
+      "lastName": "Davidson",
+      "phone": "+1222333444",
+      "country": "USA",
+      "email": "Joshuadave890@gmail.com",
+      "password": "12345678",
+      "address": "12233444",
+      "referralId": null,
+      "balance": 0
+    }
+  ],
+  "pendingDeposits": [],
+  "transactions": [
+    {
+      "txid": "TXN331136",
+      "email": "Joshuadave890@gmail.com",
+      "type": "Deposit",
+      "amount": 500,
+      "status": "Completed"
+    },
+    {
+      "txid": "TXN531001",
+      "email": "Joshuadave890@gmail.com",
+      "type": "Deposit",
+      "amount": 500,
+      "status": "Completed"
+    },
+    {
+      "txid": "TXN112517",
+      "email": "raymondbtc@17",
+      "type": "Deposit",
+      "amount": 500,
+      "status": "Completed"
+    },
+    {
+      "txid": "TXN738964",
+      "email": "sukibtc@gmail.com",
+      "type": "Deposit",
+      "amount": 1000,
+      "status": "Completed"
+    }
+  ]
+}
